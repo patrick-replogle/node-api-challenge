@@ -29,18 +29,34 @@ const ProjectCard = props => {
       });
   });
 
+  const deleteProject = () => {
+    axios
+      .delete(`http://localhost:4000/api/projects/${id}`)
+      .then(() => {
+        props.history.push("/");
+      })
+      .catch(err => {
+        console.log("error deleting project: ", err);
+      });
+  };
+
   return (
-    <div>
-      <p>Project Name: {project.name}</p>
-      <p>Project Description: {project.description}</p>
+    <div className="projectCard">
+      <h2>Project Info</h2>
+      <p>{project.name}</p>
+      <p>{project.description}</p>
+      <h2>Actions Below: </h2>
       {actions.map(action => {
         return (
           <div key={action.id}>
-            <p>Action Name: {action.description}</p>
-            <p>Action Description: {action.notes}</p>
+            <p>{action.description}</p>
+            <p>{action.notes}</p>
           </div>
         );
       })}
+      <button onClick={() => props.history.push("/")}>back</button>
+      <button onClick={deleteProject}>Delete</button>
+      <button>Edit</button>
     </div>
   );
 };
