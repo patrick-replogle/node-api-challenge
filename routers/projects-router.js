@@ -90,5 +90,41 @@ router.put("/:id", async (req, res) => {
 });
 
 //delete a project
+router.delete("/:id", async (req, res) => {
+  try {
+    const project = await Projects.get(req.params.id);
+    if (project) {
+      return res.status(204).json(await Projects.remove(req.params.id));
+    } else {
+      res
+        .status(404)
+        .json({ message: "The specified project id does not exist" });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: "The specified project could not be deleted at this time"
+    });
+  }
+});
+
+//get project actions
+router.get("/:id/actions", async (req, res) => {
+  try {
+    const actions = await Projects.getProjectActions(req.params.id);
+    if (actions.length > 0) {
+      return res.status(200).json(actions);
+    } else {
+      res
+        .status(404)
+        .json({ message: "The specified project id does not exist" });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: "Project actions could not be retrieved at this time"
+    });
+  }
+});
 
 module.exports = router;
