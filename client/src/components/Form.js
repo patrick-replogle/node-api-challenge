@@ -32,6 +32,7 @@ const Form = ({
       .post("http://localhost:4000/api/projects", project)
       .then(() => {
         fetchProjects();
+        setProject({ name: "", description: "" });
       })
       .catch(err => {
         console.log("error fetching posting new project: ", err);

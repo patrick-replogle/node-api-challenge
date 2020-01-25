@@ -21,7 +21,8 @@ const ProjectsList = ({
       .catch(err => {
         console.log("Error fetching projects: ", err);
       });
-  }, [projectList, setProjectList]);
+  }, [setProjectList]);
+
   return (
     <div className="projectsContainer">
       <Form
@@ -34,7 +35,7 @@ const ProjectsList = ({
       />
       {projectList.map(project => {
         return (
-          <Link to="/project/:id" key={project.id}>
+          <Link to={`/project/${project.id}`} key={project.id}>
             {project.name}
           </Link>
         );
