@@ -1,5 +1,6 @@
 const express = require("express");
 const Actions = require("../data/helpers/actionModel.js");
+const Projects = require("../data/helpers/projectModel.js");
 
 const router = express.Router();
 
@@ -53,9 +54,9 @@ router.post("/:id", (req, res) => {
   if (!req.body.description || !req.body.notes) {
     res.status(400).json({ message: "Please include description and notes" });
   }
-  Actions.get(req.params.id)
-    .then(action => {
-      if (action) {
+  Projects.get(req.params.id)
+    .then(project => {
+      if (project) {
         return Actions.insert(newAction).then(data =>
           res.status(201).json(data)
         );
