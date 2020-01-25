@@ -25,6 +25,7 @@ const ProjectsList = ({
 
   return (
     <div className="projectsContainer">
+      <h1>Projects and Actions App!</h1>
       <Form
         projectList={projectList}
         setProjectList={setProjectList}
