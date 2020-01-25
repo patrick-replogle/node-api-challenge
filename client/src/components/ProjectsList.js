@@ -21,7 +21,7 @@ const ProjectsList = ({
       .catch(err => {
         console.log("Error fetching projects: ", err);
       });
-  }, [setProjectList]);
+  }, [projectList, setProjectList]);
   return (
     <div className="projectsContainer">
       <Form
