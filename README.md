@@ -40,13 +40,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+Express is a node js framework built on top of node js that helps developers easily set up middleware and routing to help respond to http requests. Calling the listen() method will start the server and allow you to assign it to a specific port.
+
 - [ ] Describe Middleware?
+
+Middleware are functions that run before your route handler is executed. It can augment or change the request object, respond to the clients request and even prevent the route handler from running all together if the request does not pass the verification in place by the middleware. Middleware can be chained together and allow us to keep our code dry. Middleware are designed to be reusable.
 
 - [ ] Describe a Resource?
 
+A resource is data stored on the api/server and the set of methods that operate on it.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+The API can return status codes, error or success messages, as well data to help clients know if their request was successful or not. A well built API will respond correctly to all http requests with the correct feedback.
+
 - [ ] How can we partition our application into sub-applications?
+
+Breaking our app into smaller pieces and separate files allows for better readability, easier debugging, and better organization. We can split our routes and any data persistence helpers into separate files. Splitting up our larger server functions into their own file is another way to clean up our app. Even our middleware can be split into sub-applications, allowing for better reusability.
 
 ## Minimum Viable Product
 
